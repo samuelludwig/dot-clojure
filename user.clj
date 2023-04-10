@@ -10,14 +10,16 @@
 
 (ns user
   "Tools for REPL Driven Development"
+  #_{:clj-kondo/ignore [:unused-namespace]}
   (:require
    [clojure.tools.deps.alpha.repl :refer [add-libs]]
    [find-deps.core :as find-lib]
    [portal.api :as inspect]
    [com.brunobonacci.mulog :as mulog]
    [mulog-publisher] ; tap mulog events
-   [clojure.java.io :as io]))
-   ;; [dev.system] ; Component management
+   ;; [system] ; Component management
+   [clojure.java.io :as io]
+   [clojure.repl :as r]))
 
 ;; ---------------------------------------------------------
 ;; Help
@@ -75,7 +77,7 @@
   and other tap sources
   `mulog-tap-publisher` to stop publisher"
   (mulog/start-publisher!
-   {:type :custom, :fqn-function "dev.mulog-publisher/tap"}))
+   {:type :custom, :fqn-function "mulog-publisher/tap"}))
 
 (mulog/log ::dev-event ::ns (ns-publics *ns*))
 
@@ -121,15 +123,3 @@
 
 ;; ---------------------------------------------------------
 
-;(require '[s44.synaptolith.advertiser.interface])
-(comment
-  (require '[s44.synaptolith.slack.interface :as slack])
-
-  @(+ 2 3) ; errors
-  @(slack/send-message :debug-or-testing "we hacking")
-
-  @(slack/upload-file :alerts-pub-discrepancies
-                      {:file (io/file "../hello.txt")
-                       :initial-comment "this should probably work"
-                       :filename "hax.txt"
-                       :title "OneMoreTest"}))
