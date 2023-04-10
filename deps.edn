@@ -93,6 +93,9 @@
                  ring/ring-mock               {:mvn/version "0.4.0"}
                  criterium/criterium          {:mvn/version "0.4.6"}}}
 
+  :lib/poly {:extra-deps {polylith/clj-poly {:mvn/version "0.2.17-alpha"}}
+             :main-opts  ["-m" "polylith.clj.core.poly-cli.core"]}
+
   :lib/nrepl
   {:extra-deps {nrepl/nrepl {:mvn/version "1.0.0"}}}
 
@@ -223,7 +226,7 @@
                 "-f" "rebel-readline.main/-main"]}
 
   :repl/reloaded
-  {:extra-paths ["dev" "test"]
+  {:extra-paths ["/home/dot/.config/clojure" "dev" "test"]
    :extra-deps {nrepl/nrepl                  {:mvn/version "1.0.0"}
                 cider/cider-nrepl            {:mvn/version "0.30.0"}
                 com.bhauman/rebel-readline   {:mvn/version "0.1.4"}
@@ -237,7 +240,9 @@
                 lambdaisland/kaocha          {:mvn/version "1.80.1274"}
                 org.clojure/test.check       {:mvn/version "1.1.1"}
                 ring/ring-mock               {:mvn/version "0.4.0"}
-                criterium/criterium          {:mvn/version "0.4.6"}}
+                criterium/criterium          {:mvn/version "0.4.6"}
+                find-deps/find-deps {:git/url "https://github.com/hagmonk/find-deps"
+                                     :sha     "9bf23a52cb0a8190c9c2c7ad1d796da802f8ce7a"}}
    :main-opts  ["-m" "nrepl.cmdline"
                 "--middleware" "[cider.nrepl/cider-middleware,portal.nrepl/wrap-portal]"
                 "--interactive"
@@ -912,7 +917,7 @@
                  :sha     "b1a7fd310b6511048fbacb8e496f574c8ccfa291"}}
    :main-opts  ["-m" "closh.zero.frontend.rebel"]}
 
-  #_()}
+  #_()}}
  ;; End of alias definitions
  ;; --------------------------------------------------
- }
+
