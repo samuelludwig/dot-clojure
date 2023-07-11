@@ -12,8 +12,8 @@
   "Tools for REPL Driven Development"
   #_{:clj-kondo/ignore [:unused-namespace]}
   (:require
-   [clojure.tools.deps.alpha.repl :refer [add-libs]]
-   [find-deps.core :as find-lib]
+   ;[clojure.tools.deps.alpha.repl :refer [add-libs]]
+   ;[find-deps.core :as find-lib]
    [portal.api :as inspect]
    [com.brunobonacci.mulog :as mulog]
    [mulog-publisher] ; tap mulog events
@@ -89,19 +89,13 @@
 ;; ---------------------------------------------------------
 ;; Find Libraries
 (comment
-  (find-lib/deps "library-name") ; fuzzy library search
-  (find-lib/deps "cheshire") ; fuzzy library search
-  (find-lib/print-deps "library-name")) ; show results as table
+  #_())
 ;; ---------------------------------------------------------
 
 ;; ---------------------------------------------------------
 ;; Hotload libraries into running REPL
 ;; `deps-*` LSP snippets to add dependency forms
 (comment
-  (add-libs '{domain/library-name {:mvn/version "1.0.0"}})
-  (add-libs '{http-kit/http-kit {:mvn/version "2.6.0"}})
-  (add-libs '{cheshire/cheshire {:mvn/version "5.11.0"}})
-  (add-libs '{poly/slack {:local/root "components/slack"}})
   #_()) ; End of rich comment
 ;; ---------------------------------------------------------
 
